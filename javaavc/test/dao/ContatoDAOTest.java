@@ -142,5 +142,6 @@ public class ContatoDAOTest {
 
         /*===================== Fase3: Verificação e Análise ==============================*/
         assertNull(contato);
+        assertEquals(2, contatoDAO.obterTodosContatos().size()); // Verifica se a quantidade de contatos ainda é a mesma após a pesquisa
     }
 }
