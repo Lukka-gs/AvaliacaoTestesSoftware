@@ -65,4 +65,8 @@ public class ContatoDAO {
     public void limparContatos() {
         contatos.clear();
     }
+
+    public List<Contato> obterTodosContatos() {
+        return this.contatos;
+    }
 }

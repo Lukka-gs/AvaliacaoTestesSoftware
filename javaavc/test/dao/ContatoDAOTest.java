@@ -53,6 +53,9 @@ public class ContatoDAOTest {
         Contato contatoPesquisado = contatoDAO.pesquisarContatoPorId(3);
         assertNotNull(contatoPesquisado);
         assertEquals("Alice Johnson", contatoPesquisado.getNome());
+        assertEquals("alice@example.com", contatoPesquisado.getEmail());
+        assertTrue(contatoPesquisado.isAtivo());
+        assertEquals(3, contatoDAO.obterTodosContatos().size());
     }
 
     /**
@@ -70,7 +73,9 @@ public class ContatoDAOTest {
         // Verifica se ainda existe apenas um contato com ID 1 e se ele não foi substituído.
         Contato contatoPesquisado = contatoDAO.pesquisarContatoPorId(1);
         assertNotNull(contatoPesquisado);
-        assertEquals("Lucca Soares", contatoPesquisado.getNome()); // O contato original é mantido
+        assertEquals("Lucca Soares", contatoPesquisado.getNome()); // O nome do contato original é mantido
+        assertEquals("lucca@luccasoares.com.br", contatoPesquisado.getEmail()); // O email do contato original é mantido
+        assertTrue(contatoPesquisado.isAtivo()); // O status do contato é mantido
     }
 
     /**
@@ -87,6 +92,9 @@ public class ContatoDAOTest {
         /*===================== Fase3: Verificação e Análise ==============================*/
         assertTrue(contatoRemovido);
         assertNull(contatoDAO.pesquisarContatoPorId(idContatoRemover));
+        assertEquals(1, contatoDAO.obterTodosContatos().size());
+        assertEquals("Tales Costa", contatoDAO.pesquisarContatoPorId(2).getNome()); // verificando se não deletou o outro que tem no banco
+        assertEquals("tales@talescosta.com.br", contatoDAO.pesquisarContatoPorId(2).getEmail()); // verificando se não deletou o outro que tem no banco
     }
 
     /**
