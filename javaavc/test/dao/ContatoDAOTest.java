@@ -44,7 +44,7 @@ public class ContatoDAOTest {
     @Test
     public void testAdicionarContato() {
         /*===================== Fase1: Montagem do Cenário ===============================*/
-        Contato novoContato = new Contato(3, "Alice Johnson", "alice@example.com", true);
+        Contato novoContato = new Contato(3, "Duda Cardozo", "duda@dudacardozo.com", true);
 
         /*===================== Fase2: Execução do Teste ===============================*/
         contatoDAO.adicionarContato(novoContato);
@@ -52,8 +52,8 @@ public class ContatoDAOTest {
         /*===================== Fase3: Verificação e Análise ==============================*/
         Contato contatoPesquisado = contatoDAO.pesquisarContatoPorId(3);
         assertNotNull(contatoPesquisado);
-        assertEquals("Alice Johnson", contatoPesquisado.getNome());
-        assertEquals("alice@example.com", contatoPesquisado.getEmail());
+        assertEquals("Duda Cardozo", contatoPesquisado.getNome());
+        assertEquals("duda@dudacardozo.com", contatoPesquisado.getEmail());
         assertTrue(contatoPesquisado.isAtivo());
         assertEquals(3, contatoDAO.obterTodosContatos().size());
     }
@@ -64,7 +64,7 @@ public class ContatoDAOTest {
     @Test
     public void testAdicionarContatoDuplicado() {
         /*===================== Fase1: Montagem do Cenário ===============================*/
-        Contato novoContato = new Contato(1, "Duplicate User", "duplicate@example.com", true);
+        Contato novoContato = new Contato(1, "Duplicate User", "duplicate@duplicateuser.com", true);
 
         /*===================== Fase2: Execução do Teste ===============================*/
         contatoDAO.adicionarContato(novoContato);
